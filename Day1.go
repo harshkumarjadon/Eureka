@@ -35,19 +35,15 @@ func variables() {
 
 }
 
-func displayPrintf() {
-
-}
-
 func variables2() {
-	// var distance = 5000
-	// var speed = 100
+	var distance = 5000
+	var speed = 100
 
-	// var (
-	// 	distance1 = 5000
-	// 	speed1    = 400
-	// )
-
+	var (
+		distance1 = 5000
+		speed1    = 400
+	)
+	fmt.Println(distance, distance1, speed, speed1)
 	// var distance2, speed2 = 5000, 1000
 	var randomNumber = rand.Intn(10) + 1
 	fmt.Println(randomNumber)
