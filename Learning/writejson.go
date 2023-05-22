@@ -3,10 +3,12 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
 	"os"
-
+	"regexp"
 )
 
 // Create a Customer type
@@ -26,6 +28,16 @@ func (c *Customer) WriteJSON(w io.Writer) error {
 
 	_, err = w.Write(js)
 	return err
+}
+
+var digitRegexp = regexp.MustCompile("[0-9]+")
+
+func CopyDigits(filename string) []byte {
+	b, _ := ioutil.ReadFile("./customer.json")
+	b = digitRegexp.Find(b)
+	c := make([]byte, len(b))
+	copy(c, b)
+	return c
 }
 
 func main() {
@@ -50,4 +62,5 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Println(CopyDigits(""))
 }

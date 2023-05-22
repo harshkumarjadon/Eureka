@@ -15,10 +15,14 @@ func main() {
 	}
 	for i := range pow {
 		pow[i] = 1 << uint(i) // == 2**i
-		cc = 1 << uint(i)
+		//cc = 1 << uint(i)
 		fmt.Print(cc, " ", i, " : ", pow[i], " - ", 1<<uint(i), " >\n ")
 	}
 
+	for i := range pow {
+		//cc = 1 << uint(i)
+		fmt.Print(cc, " ", i, " : ", pow[i], " - ", 1<<uint(i), " >\n ")
+	}
 	// fmt.Println("new program")
 
 	// for i := 0; i < len(pow); i++ {

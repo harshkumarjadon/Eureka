@@ -1,0 +1,86 @@
+package main
+
+import "fmt"
+
+type ArithOp func(int, int) int
+
+func calculate(fp func(int, int) int) {
+	ans := fp(3, 2)
+	fmt.Printf("\n%v\n", ans)
+}
+
+// This is the same function but uses the type/fp defined above
+
+func calculate1(fp ArithOp) {
+	ans := fp(3, 2)
+	fmt.Printf("\n%v\n", ans)
+}
+
+func Plus(a, b int) int {
+	return a + b
+}
+
+func Minus(a, b int) int {
+	return a - b
+}
+
+func Multiply(a, b int) int {
+	return a * b
+}
+
+type pfunc func(string, int) int
+
+func testCase1(toStr string, toInt int) int {
+	fmt.Printf("1st Function Call %s %d\n", toStr, toInt)
+	return toInt
+}
+
+func testCase2(toStr string, toInt int) int {
+	fmt.Printf("2nd Function Call %s %d\n", toStr, toInt)
+	return toInt
+}
+
+func testCase3(toStr string, toInt int) int {
+	fmt.Printf("3rd Function Call %s %d\n", toStr, toInt)
+	return toInt
+}
+
+type Delete struct {
+	instance string
+}
+
+type command interface {
+	DoLoop()
+}
+
+func (dev Delete) DoLoop() {
+	fmt.Println("input: delete ", dev.instance)
+}
+func route(command string) {
+	cmd := mainFuncTable[command]
+	cmd.DoLoop()
+}
+
+var mainFuncTable = make(map[string]command)
+
+func main() {
+	mainFuncTable["delete"] = Delete{"newTestInstance"}
+	//cmd := mainFuncTable["delete"]
+	cmd := Delete{"newTestInstance"}
+	cmd.DoLoop()
+	//fmt.Println(route("new"))
+	// calculate(Plus)
+	// calculate(Minus)
+	// calculate(Multiply)
+
+	// calculate1(Plus)
+	// calculate1(Minus)
+	// calculate1(Multiply)
+
+	// funcArray := []pfunc{testCase1, testCase2, testCase3}
+
+	// for n := range funcArray {
+	// 	result := funcArray[n]("Test", n)
+	// 	fmt.Printf("Run Test Case #%d reference %v result %d\n", n, funcArray[n], result)
+	// }
+}
