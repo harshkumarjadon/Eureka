@@ -63,11 +63,30 @@ func route(command string) {
 
 var mainFuncTable = make(map[string]command)
 
+// understanding pointers
+func pointers() {
+	var a int = 10
+	var b *int = &a
+	var c *int = b
+	fmt.Println(&a)
+	fmt.Println(a, "\n")
+	fmt.Println(b)
+	fmt.Println(*b)
+	fmt.Println(&b, "\n")
+	fmt.Println("", b)
+	fmt.Println(*b)
+	fmt.Println(&b, "\n")
+
+	fmt.Println(c)
+	fmt.Println(&c)
+	fmt.Println(*c)
+}
 func main() {
-	mainFuncTable["delete"] = Delete{"newTestInstance"}
+	pointers()
+	//mainFuncTable["delete"] = Delete{"newTestInstance"}
 	//cmd := mainFuncTable["delete"]
-	cmd := Delete{"newTestInstance"}
-	cmd.DoLoop()
+	//cmd := Delete{"newTestInstance"}
+	//cmd.DoLoop()
 	//fmt.Println(route("new"))
 	// calculate(Plus)
 	// calculate(Minus)

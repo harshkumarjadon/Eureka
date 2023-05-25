@@ -4,6 +4,12 @@ import (
 	"fmt"
 )
 
+// Type address, auto increment onc ethe address and value are mapped
+type address struct {
+	hostname string
+	port     int
+}
+
 func copyData() {
 	a := []string{"a", "b", "c", "d", "e"}
 	// var a1 []string
@@ -54,16 +60,38 @@ func SayHello(to string) {
 	fmt.Printf("Hello, %s!\n", to)
 }
 
+func removeArray() {
+	s := []int{5, 6, 7, 8, 9}
+	fmt.Println("Array items", s)
+	fmt.Println("Preserve array - removing 1 ", remove(s, 2))       // "[5 6 8 9]"
+	fmt.Println("Don't Preserve array - removing 1 ", remove(s, 2)) // "[5 6 8 9]"
+}
+func remove(slice []int, i int) []int {
+	copy(slice[i:], slice[i+1:])
+	return slice[:len(slice)-1]
+}
+func removeDonotpreserve(slice []int, i int) []int {
+	slice[i] = slice[len(slice)-1]
+	return slice[:len(slice)-1]
+}
+
 func main() {
 	//copyData()
 	//pointers()
 	//underscoreValues()
 	//Function as pointer
-	pFunc := helloPointer
-	pFunc()
+	removeArray()
+	// pFunc := helloPointer
+	// pFunc()
 
-	//Use function signature
-	var hf HelloFunc
-	hf = SayHello
-	hf("world, as function signature")
+	// //Use function signature
+	// var hf HelloFunc
+	// hf = SayHello
+	// hf("world, as function signature")
+	// //count increases automatically once you add the data in maps
+	// hits := make(map[address]int)
+	// hits[address{"golang.org", 443}]++
+	// hits[address{"golang.org", 443}]++
+	// fmt.Println(hits)
+
 }
