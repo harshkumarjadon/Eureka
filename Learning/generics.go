@@ -25,45 +25,87 @@ func ForEach[T any](s []T, f func(ele T, i int, s []T)) {
 	}
 }
 
+type Person interface {
+	Work()
+}
+
+type worker string
+
+func (w worker) Work() {
+	fmt.Printf("%s is working\n", w)
+}
+
+func DoWork(things []worker) {
+	for _, v := range things {
+		v.Work()
+	}
+}
+
+func DoWorkGeneric[T Person](things []T) {
+	for _, v := range things {
+		v.Work()
+	}
+}
+
 func main() {
-	// // Initialize a map for the integer values
-	// ints := map[string]int64{
-	// 	"first":  34,
-	// 	"second": 12,
-	// }
+	/*
+		// // Initialize a map for the integer values
 
-	// // Initialize a map for the float values
-	// floats := map[string]float64{
-	// 	"first":  35.98,
-	// 	"second": 26.99,
-	// }
+		// ints := map[string]int64{
+		// 	"first":  34,
+		// 	"second": 12,
+		// }
 
-	// fmt.Printf("Non-Generic Sums: %v and %v\n",
-	// 	SumInts(ints),
-	// 	SumFloats(floats))
+		// // Initialize a map for the float values
+		// floats := map[string]float64{
+		// 	"first":  35.98,
+		// 	"second": 26.99,
+		// }
 
-	// fmt.Printf("Generic Sums: %v and %v\n",
-	// 	SumIntsOrFloats[string, int64](ints),
-	// 	SumIntsOrFloats[string, float64](floats))
+		// fmt.Printf("Non-Generic Sums: %v and %v\n",
+		// 	SumInts(ints),
+		// 	SumFloats(floats))
 
-	// fmt.Printf("Generic Sums, type parameters inferred: %v and %v\n",
-	// 	SumIntsOrFloats(ints),
-	// 	SumIntsOrFloats(floats))
+		// fmt.Printf("Generic Sums: %v and %v\n",
+		// 	SumIntsOrFloats[string, int64](ints),
+		// 	SumIntsOrFloats[string, float64](floats))
 
-	// fmt.Printf("Generic Sums with Constraint: %v and %v\n",
-	// 	SumNumbers(ints),
-	// 	SumNumbers(floats))
+		// fmt.Printf("Generic Sums, type parameters inferred: %v and %v\n",
+		// 	SumIntsOrFloats(ints),
+		// 	SumIntsOrFloats(floats))
 
-	// // without passing type
-	// fmt.Println(reverse([]int{1, 2, 3, 4, 5}))
+		// fmt.Printf("Generic Sums with Constraint: %v and %v\n",
+		// 	SumNumbers(ints),
+		// 	SumNumbers(floats))
 
-	// // passing type
-	// fmt.Println(reverse[int]([]int{1, 2, 3, 4, 5}))
+		// // without passing type
+		// fmt.Println(reverse([]int{1, 2, 3, 4, 5}))
 
-	s := []int{1, 2, 3, 4, 5}
-	ForEach(s, func(ele int, i int, s []int) {
-		fmt.Printf("ele at %d is %d\n", i, ele)
-	})
+		// // passing type
+		// fmt.Println(reverse[int]([]int{1, 2, 3, 4, 5}))
+
+		// s := []int{1, 2, 3, 4, 5}
+		// ForEach(s, func(ele int, i int, s []int) {
+		// 	fmt.Printf("ele at %d is %d\n", i, ele)
+		// })
+	*/
+
+	var abc=
+	var a, b, c worker
+	a = "A"
+	b = "B"
+	c = "C"
+	DoWork([]worker{a, b, c})
+	DoWork([]worker{a})
+
+
+	var ga, gb, gc worker
+	ga = "Generic A"
+	gb = "Generic B"
+	gc = "Generic C"
+	DoWorkGeneric([]worker{ga, gb, gc})
+	DoWorkGeneric([]worker{ga})
+
 }
 
 // SumInts adds together the values of m.

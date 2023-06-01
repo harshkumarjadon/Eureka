@@ -1,0 +1,14 @@
+node_modules
+dist/
+coverage
+.coveralls.yml
+.dynamodb
+test/proto.*
+test/schemas/protoSchema.ts
+*.keep
+.idea
+yarn.lock
+.cdrc
+.DS_Store
+.tags*
+*.bak

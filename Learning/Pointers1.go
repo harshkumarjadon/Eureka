@@ -2,6 +2,14 @@ package main
 
 import "fmt"
 
+// taking a structure
+type Employee struct {
+
+	// taking variables
+	name  string
+	empid int
+}
+
 type ArithOp func(int, int) int
 
 func calculate(fp func(int, int) int) {
@@ -102,4 +110,23 @@ func main() {
 	// 	result := funcArray[n]("Test", n)
 	// 	fmt.Printf("Run Test Case #%d reference %v result %d\n", n, funcArray[n], result)
 	// }
+
+	// creating the instance of the Employee struct type
+	emp := Employee{"ABC", 19078}
+
+	// Here, it is the pointer to the struct
+	pts := &emp
+	fmt.Println(pts)
+
+	// accessing the struct fields(liem employee's name)
+	// using a pointer but here we are not using dereferencing explicitly
+	fmt.Println(pts.name)
+
+	// same as above by explicitly using dereferencing concept
+	// means the result will be the same
+	fmt.Println((*pts).name)
+
+	// updating the value of name
+	pts.name = "XYZ"
+	fmt.Println(pts)
 }
