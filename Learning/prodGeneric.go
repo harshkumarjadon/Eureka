@@ -5,51 +5,51 @@ import (
 
 )
 
-type crud[T, K any] interface {
+type crud1[T, K any] interface {
 	insert(T, K)
 	update(int, T, K)
 }
 
-type Product struct {
+type GenProduct struct {
 	id    float64
 	name  string
 	price float64
 }
 
-type Category struct {
-	id      float64
-	name    string
-	product []Product
+type GenCategory struct {
+	id           float64
+	name         string
+	dummyProduct []GenProduct
 }
 
-func (c Product) insert(cat *Category) {
-	cat.product = append(cat.product, c)
+func (c GenProduct) insert(cat *GenCategory) {
+	cat.dummyProduct = append(cat.dummyProduct, c)
 }
 
-func (c Product) update(upd int, cat *Category) {
+func (c GenProduct) update(upd int, cat *GenCategory) {
 	//cat.id = float64(upd)
-	for i, v := range cat.product {
+	for i, v := range cat.dummyProduct {
 		if v.id == float64(upd) {
-			cat.product[i] = c
+			cat.dummyProduct[i] = c
 		}
 	}
 }
 
-func (c Category) insert(prod *Product) {
-	c.product = append(c.product, *prod)
+func (c GenCategory) insert(prod *GenProduct) {
+	c.dummyProduct = append(c.dummyProduct, *prod)
 }
 
-func (c Category) update(upd int, cat *Category) {
+func (c GenCategory) update(upd int, cat *GenCategory) {
 	cat.id = float64(upd)
 	cat.name = "Hellllllo"
 }
 
 func main() {
-	cat := Category{id: 1, name: "Hello World"}
-	prod := Product{id: 123, name: "New Product", price: 1000}
+	cat := GenCategory{id: 1, name: "Hello World"}
+	prod := GenProduct{id: 123, name: "New GenProduct", price: 1000}
 
-	// cat.insert(*Product{id: 1, name: "TV", price: 10})
-	// cat.insert(*Product{id: 2, name: "TV New", price: 100})
+	// cat.insert(*GenProduct{id: 1, name: "TV", price: 10})
+	// cat.insert(*GenProduct{id: 2, name: "TV New", price: 100})
 
 	cat.insert(&prod)
 	prod.insert(&cat)
@@ -57,7 +57,7 @@ func main() {
 	fmt.Println(cat)
 	fmt.Println("Hello world!")
 
-	prod1 := Product{id: 123, name: "PPPPP PPPP", price: 9999}
+	prod1 := GenProduct{id: 123, name: "PPPPP PPPP", price: 9999}
 	prod1.update(123, &cat)
 	fmt.Println(cat)
 }
