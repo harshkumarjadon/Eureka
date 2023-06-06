@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Number interface {
 	int64 | float64
@@ -31,6 +33,21 @@ type Person interface {
 
 type worker string
 
+type crud[T any] interface {
+	insert(T)
+	update(int, T)
+}
+
+type MyStruct struct {
+	works int
+	id    int
+	name  string
+}
+
+func (s Person) insert(t MyStruct) {
+	fmt.Println("hello, world")
+}
+
 func (w worker) Work() {
 	fmt.Printf("%s is working\n", w)
 }
@@ -48,6 +65,8 @@ func DoWorkGeneric[T Person](things []T) {
 }
 
 func main() {
+	ms := MyStruct{id: 12}
+	ms.insert(ms)
 	/*
 		// // Initialize a map for the integer values
 
@@ -90,21 +109,20 @@ func main() {
 		// })
 	*/
 
-	var abc=
-	var a, b, c worker
-	a = "A"
-	b = "B"
-	c = "C"
-	DoWork([]worker{a, b, c})
-	DoWork([]worker{a})
+	// var a, b, c worker
+	// a = "A"
+	// b = "B"
+	// c = "C"
+	// DoWork([]worker{a, b, c})
+	// // DoWorkGeneric([]worker{ga, gb, gc})
+	// DoWork([]worker{a})
 
-
-	var ga, gb, gc worker
-	ga = "Generic A"
-	gb = "Generic B"
-	gc = "Generic C"
-	DoWorkGeneric([]worker{ga, gb, gc})
-	DoWorkGeneric([]worker{ga})
+	// var ga, gb, gc worker
+	// ga = "Generic A"
+	// gb = "Generic B"
+	// gc = "Generic C"
+	// DoWorkGeneric([]worker{ga, gb, gc})
+	// DoWorkGeneric([]worker{ga})
 
 }
 
