@@ -1,0 +1,23 @@
+{{define "base"}}
+<!doctype html>
+<html lang='en'>
+	<head>
+		<meta charset="utf-8">
+		<title>{{template "title" .}} CodeBunk</title>
+	</head>
+	<body>
+		<header>
+			<h1><a href="/">CodeBunk</a></h1>
+		</header>
+		{{template "nav" .}}
+		<main>
+<!-- 			
+			<h2><a href="/">Lasest Code...</a></h1>
+			<p>Data Will Shown Here....</p>
+ -->		
+ 			{{template "main" .}}
+		</main>
+		<footer>Powered by <a href='https://golang.org/'>Go</a></footer>
+	</body>
+</html>
+{{end}}

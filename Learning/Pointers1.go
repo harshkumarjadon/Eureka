@@ -64,6 +64,7 @@ type command interface {
 func (dev Delete) DoLoop() {
 	fmt.Println("input: delete ", dev.instance)
 }
+
 func route(command string) {
 	cmd := mainFuncTable[command]
 	cmd.DoLoop()

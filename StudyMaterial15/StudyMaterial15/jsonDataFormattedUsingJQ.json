@@ -1,0 +1,45 @@
+[
+  {
+    "Title": "Shole",
+    "Year": 1970,
+    "Color": true,
+    "Actors": [
+      "Dharamendra",
+      "Amitabachan",
+      "Hema Malani",
+      "Sanjeev Kumar",
+      "Gabbar Singh : Amzad Khan"
+    ]
+  },
+  {
+    "Title": "Bajrangi Bhaijan",
+    "Year": 2010,
+    "Color": true,
+    "Actors": [
+      "Salman Khan",
+      "Nawajudin Sidqui",
+      "Little Girl"
+    ]
+  },
+  {
+    "Title": "Mugle Azam",
+    "Year": 1960,
+    "Color": true,
+    "Actors": [
+      "Dilip Kumar",
+      "Raj Kapoor",
+      "Madhubala"
+    ]
+  },
+  {
+    "Title": "Chalti Ka Naam Gaadi",
+    "Year": 1950,
+    "Color": false,
+    "Actors": [
+      "Kishore Kumar",
+      "Ashok Kumar",
+      "Ashok Kumar's Brother",
+      "Madhubala"
+    ]
+  }
+]
